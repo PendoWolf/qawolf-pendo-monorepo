@@ -1,0 +1,19 @@
+{
+  "name": "qawolf-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace @qawolf-monorepo/api",
+    "dev:web": "npm run dev --workspace @qawolf-monorepo/web",
+    "build": "npm run build --workspace @qawolf-monorepo/web",
+    "start": "npm run start --workspace @qawolf-monorepo/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
